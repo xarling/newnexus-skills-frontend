@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frontendApp', ['nn.config','ui.bootstrap'])
+angular.module('frontendApp', ['nn.config', 'ui.bootstrap', 'ngResource'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -10,6 +10,10 @@ angular.module('frontendApp', ['nn.config','ui.bootstrap'])
       .when('/persoon', {
         templateUrl: 'views/persoon.html',
         controller: 'PersoonCtrl'
+      })
+      .when('/persoon-toevoegen', {
+        templateUrl: 'views/persoon-toevoegen.html',
+        controller: 'MainCtrl'
       })
       .otherwise({
         redirectTo: '/'

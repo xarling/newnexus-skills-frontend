@@ -12,8 +12,8 @@ angular.module('nn.config', [])
 
     var allConfigs = [{
       env: ENV.DEV,
-      backendUri: 'http://localhost\:8081/api.php/',
-      resourceBackendUri: 'http://localhost\\:8081/nn-skills/api/',
+      backendUri: 'http://localhost\:8081/api/',
+      resourceBackendUri: 'http://localhost\\:8081/api/',
       apikey: 'LKlkjkljalksjdf893'
     }, {
       env: ENV.TEST,

@@ -2,6 +2,7 @@
 
 
 angular.module('frontendApp')
-  .controller('PersoonCtrl', ['$scope', 'persoonService', function ($scope, persoonService) {
+  .controller('PersoonCtrl', ['$scope', 'Persoon', function ($scope, Persoon) {
 
+    $scope.personen = Persoon.query();
   }]);
