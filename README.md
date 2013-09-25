@@ -23,3 +23,8 @@
     	proxy_set_header        X-Forwarded-Proto $scheme;
     	proxy_set_header        Host $http_host;
     }
+    
+## Apache configuration
+
+    Alias       /               /Users/xanderarling/Documents/dev/workshop/frontend/app/
+    Redirect    /api/           http://localhost:8080/newnexus/api/
