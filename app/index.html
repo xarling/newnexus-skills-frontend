@@ -34,19 +34,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultants <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                      <li><a href="/persoon">Overzicht</a></li>
-                      <li><a href="/persoon-toevoegen">Nieuwe consultant</a></li>
-                  </ul>
-              </li>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Skills <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                      <li><a href="#">Overzicht</a></li>
-                  </ul>
-              </li>
+              <li><a href="/personen">Consultants</a></li>
+              <li><a href="skills">Alle skills</a></li>
           </ul>
       </div><!-- /.navbar-collapse -->
   </nav>
@@ -102,11 +91,13 @@
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/services/configservice.js"></script>
+        <script src="scripts/services/config.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/services/persoonservice.js"></script>
+        <script src="scripts/services/persoon.js"></script>
         <script src="scripts/controllers/persoon.js"></script>
+        <script src="scripts/services/skill.js"></script>
+        <script src="scripts/controllers/skill.js"></script>
         <!-- endbuild -->
 </body>
 </html>

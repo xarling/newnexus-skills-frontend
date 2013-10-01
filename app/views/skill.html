@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" ng-model="search" class="form-control" placeholder="Zoek">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <hr>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <span ng-repeat="skill in skills | filter:search">
+            <span class="btn btn-primary">{{skill.naam}}  <button data-placement="top" data-original-title="Wissen" ng-click="deleteSkill(skill)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button></span>
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <hr>
+    <div class="col-md-6">
+        <span ng-hide="skillToevoegen">
+            <a class="btn btn-primary pull-right" ng-click="skillToevoegen = true">
+                <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Toevoegen</a>
+        </span>
+    </div>
+</div>
+
+<div class="row" ng-show="skillToevoegen">
+    <div class="col-md-6">
+
+        <span>
+            <a class="btn btn-primary pull-right" ng-click="skillToevoegen = false">
+                <i class="glyphicon glyphicon-remove-sign pull-right"></i></a>
+        </span>
+
+        <form novalidate ng-submit="addSkill()" name="skillForm">
+            <input type="text" ng-model="skill.naam" placeholder="Naam" required="true"/>
+
+            <input class="btn btn-primary btn-sm" type="submit" value="Toevoegen"/>
+        </form>
+    </div>
+</div>

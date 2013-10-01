@@ -7,12 +7,16 @@ angular.module('frontendApp', ['nn.config', 'ui.bootstrap', 'ngResource'])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/persoon', {
-        templateUrl: 'views/persoon.html',
+      .when('/personen', {
+        templateUrl: 'views/personen.html',
         controller: 'PersoonCtrl'
       })
-      .when('/persoon-toevoegen', {
-        templateUrl: 'views/persoon-toevoegen.html',
+      .when('/skills', {
+        templateUrl: 'views/skill.html',
+        controller: 'SkillCtrl'
+      })
+      .when('/persoon', {
+        templateUrl: 'views/persoon.html',
         controller: 'MainCtrl'
       })
       .otherwise({
