@@ -2,23 +2,24 @@
 
 
 angular.module('frontendApp')
-  .controller('SkillCtrl', ['$scope', 'Skill', function ($scope, Skill) {
+  .controller('SkillCtrl', ['$scope', 'Skill', '$log', function ($scope, Skill, $log) {
 
     // init get all personen
     $scope.skills = Skill.query();
+    $scope.skill = {};
 
-    $scope.skillToevoegen = false;
 
     $scope.addSkill = function () {
-
-      console.debug("save");
+      $log.info($scope.skill);
       Skill.save($scope.skill, function (n) {
         $scope.skill = {};
         $scope.refreshSkills();
       }, function (n) {
-        console.debug("sjonge, deze ging niet lekker" + n);
+        $log.info("sjonge, deze ging niet lekker" + n);
         alert("probleem met het opslaan");
       });
+
+      //}
 
 
     };
@@ -27,8 +28,8 @@ angular.module('frontendApp')
     $scope.deleteSkill = function (item) {
       Skill.delete({skillId: item.id}, function (n) {
         $scope.refreshSkills();
-      }, function(n) {
-        console.debug(n);
+      }, function (n) {
+        $log.info(n);
         alert("probleem met wissen");
       });
     };

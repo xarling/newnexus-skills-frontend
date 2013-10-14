@@ -1,5 +1,23 @@
 <div class="row">
+    <hr>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <form novalidate ng-submit="addSkill()" name="skillForm" class="form-inline">
+            <div class="form-group" ng-class="{'has-error': skillForm.$invalid && !skillForm.$pristine}">
+                <input type="text" class="form-control" name="naam" ng-model="skill.naam" contains contains-value="naam" contains-items="{{skills}}" placeholder="Naam" required="true" />
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary btn-sm" type="submit" ng-disabled="skillForm.$invalid" value="Toevoegen"/>
+            </div>
+            <div class="error" ng-show="skillForm.naam.$error.contains">Deze waarde bestaat al</div>
+
+        </form>
+    </div>
+
     <div class="col-md-2"></div>
+
     <div class="col-md-4">
         <div class="input-group">
             <input type="text" ng-model="search" class="form-control" placeholder="Zoek">
@@ -20,28 +38,4 @@
     </div>
 </div>
 
-<div class="row">
-    <hr>
-    <div class="col-md-6">
-        <span ng-hide="skillToevoegen">
-            <a class="btn btn-primary pull-right" ng-click="skillToevoegen = true">
-                <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Toevoegen</a>
-        </span>
-    </div>
-</div>
 
-<div class="row" ng-show="skillToevoegen">
-    <div class="col-md-6">
-
-        <span>
-            <a class="btn btn-primary pull-right" ng-click="skillToevoegen = false">
-                <i class="glyphicon glyphicon-remove-sign pull-right"></i></a>
-        </span>
-
-        <form novalidate ng-submit="addSkill()" name="skillForm">
-            <input type="text" ng-model="skill.naam" placeholder="Naam" required="true"/>
-
-            <input class="btn btn-primary btn-sm" type="submit" value="Toevoegen"/>
-        </form>
-    </div>
-</div>

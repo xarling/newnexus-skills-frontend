@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frontendApp', ['nn.config', 'ui.bootstrap', 'ngResource'])
+angular.module('frontendApp', ['nn.config', 'ngRoute', 'ui.bootstrap', 'ngResource', 'lodash'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -26,3 +26,4 @@ angular.module('frontendApp', ['nn.config', 'ui.bootstrap', 'ngResource'])
     $location.html5Mode(true).hashPrefix('!');
   }]
   );
+
