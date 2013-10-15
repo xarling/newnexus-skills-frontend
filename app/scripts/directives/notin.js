@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frontendApp').directive('contains', ['$parse', '_', function ($parse, _) {
+angular.module('frontendApp').directive('notIn', ['$parse', '_', function ($parse, _) {
   return {
     restrict: 'A',
     require: 'ngModel',
@@ -28,12 +28,12 @@ angular.module('frontendApp').directive('contains', ['$parse', '_', function ($p
 
       function check(attrs, value) {
         // need to do this parsing, because attrs.containsItems is a string
-        var containsItems = $parse(attrs.containsItems)(scope);
+        var containsItems = $parse(attrs.notInItems)(scope);
         var items = _.filter(containsItems, function(item) {
-          return item[attrs.containsValue].toUpperCase() === value.toUpperCase();
+          return item[attrs.notInValue].toUpperCase() === value.toUpperCase();
         });
         var valid = _.isEmpty(items);
-        ctrl.$setValidity('contains', valid);
+        ctrl.$setValidity('notIn', valid);
         return valid;
       };
     }

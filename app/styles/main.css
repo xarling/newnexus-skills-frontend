@@ -27,4 +27,11 @@ body {
     color: #f00;
 }
 
+/* Bootstrap 3 fix */
+.modal {
+    display: block;
+    height: 0;
+    overflow: visible;
+}
+/* End bootstrap 3 fix */
 
