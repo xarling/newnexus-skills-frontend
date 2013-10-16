@@ -2,28 +2,32 @@
 
 
 angular.module('frontendApp')
-  .controller('PersoonCtrl', ['$scope', 'Persoon', '$modal', function ($scope, Persoon, $modal) {
+  .controller('PersoonCtrl', ['$scope', 'Persoon', '$modal', 'Skill', function ($scope, Persoon, $modal, Skill) {
 
+    $scope.selectedSkill = undefined;
+    $scope.skills = Skill.query();
     // init get all personen
     $scope.personen = Persoon.query();
 
     $scope.saveNew = function () {
-
       Persoon.save($scope.persoon, function (n) {
         // empty persoon at the end
         $scope.persoon = {};
       }, function (n) {
         // hier gaat het mis. Nu maar even alert
-        console.debug("sjonge, deze ging niet lekker" + n);
         alert("probleem met het opslaan");
       });
-
-
     };
 
-    $scope.close = function() {
-      $modal
+    $scope.delete = function(persoon) {
+      Persoon.delete({id: persoon.id}, function(n) {
+        // gaan we hier de persoon uit de lijst halen, of een nieuwe query?
+        $scope.personen = Persoon.query();
+      }, function(n) {
+        alert('weer een probleem');
+      })
     };
+
 
     $scope.open = function() {
        var modalInstance = $modal.open({

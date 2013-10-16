@@ -15,9 +15,9 @@ angular.module('frontendApp', ['nn.config', 'ngRoute', 'ui.bootstrap', 'ngResour
         templateUrl: 'views/skill.html',
         controller: 'SkillCtrl'
       })
-      .when('/persoon', {
+      .when('/persoon-toevoegen', {
         templateUrl: 'views/persoon.html',
-        controller: 'MainCtrl'
+        controller: 'PersoonCtrl'
       })
       .otherwise({
         redirectTo: '/'

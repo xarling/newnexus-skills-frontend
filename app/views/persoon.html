@@ -1,4 +1,14 @@
-<form novalidate>
-    <input type="text" ng-model="persoon.voornaam" placeholder="Voornaam" required/> <input type="text" ng-model="persoon.achternaam" placeholder="Achternaam" required/>
-    <input class="btn btn-primary btn-sm" type="submit"/>
+<form name="persoonForm" novalidate ng-submit="saveNew()" class="form-inline">
+    <input type="text" ng-model="persoon.voornaam" placeholder="Voornaam" required/>
+    <input type="text" ng-model="persoon.achternaam" placeholder="Achternaam" required/>
+
+
+    <hr>
+
+    <!--
+    filter will not work on promise
+    <input ng-model="skill" typeahead="skill for skill in skills | filter:$viewValue | limitTo:8"/>-->
+    <input ng-model="selectedSkill" typeahead="skill as skill.naam for skill in skills | filter:$viewValue | limitTo:8"/>
+
+    <input class="btn btn-primary btn-sm" type="submit" ng-disabled="persoonForm.$invalid" value="Toevoegen"/>
 </form>
