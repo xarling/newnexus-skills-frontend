@@ -18,6 +18,9 @@ angular.module('frontendApp', ['nn.config', 'ngRoute', 'ui.bootstrap', 'ngResour
       .when('/persoon-toevoegen', {
         templateUrl: 'views/persoon.html',
         controller: 'PersoonCtrl'
+      }).when('/persoon-aanpassen/:id', {
+        templateUrl: 'views/persoon.html',
+        controller: 'EditPersoonCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -49,7 +49,7 @@
             <tr ng-repeat="persoon in personen | filter:search">
                 <td>{{persoon.voornaam}} <span ng-bind="persoon.achternaam"></span></td>
                 <td>
-                    <button data-placement="top" data-original-title="Aanpassen" ng-click="" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-edit"></i></button>
+                    <a data-placement="top" data-original-title="Aanpassen" href="/persoon-aanpassen/{{persoon.id}}" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-edit"></i></a>
                     <button data-placement="top" data-original-title="Wissen" ng-click="delete(persoon)" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i></button>
                 </td>
             </tr>
