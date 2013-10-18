@@ -4,7 +4,7 @@ angular.module('frontendApp').factory('Persoon', ['$resource', 'ConfigService', 
   var Persoon = $resource($config.get('resourceBackendUri') + 'persoon/:id',
     {id: '@id' }, {
       update: { method: 'PUT' },
-      remove: { method: 'DELETE', params: { skillId: '@skillId' }, headers: { 'Content-Type': 'application/json' } }
+      remove: { method: 'DELETE', params: { id: '@id' }, headers: { 'Content-Type': 'application/json' } }
     }
 
   );

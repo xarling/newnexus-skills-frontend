@@ -1,11 +1,22 @@
 <form name="persoonForm" novalidate ng-submit="saveNew()" class="form-inline">
     <input type="text" ng-model="persoon.voornaam" placeholder="Voornaam" required/>
     <input type="text" ng-model="persoon.achternaam" placeholder="Achternaam" required/>
-
+    <input class="btn btn-primary btn-sm" type="submit" ng-disabled="persoonForm.$invalid" value="Opslaan"/>
+</form>
 
     <hr>
+    Huidige skills:
+<div class="row">
+    <div class="col-md-6">
+        <span ng-repeat="skill in persoon.skills | filter:search">
+            <span class="btn btn-primary">{{skill.naam}}  <button data-placement="top" data-original-title="Wissen" ng-click="deleteSkill(skill)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button></span>
+        </span>
+    </div>
+</div>
+<hr>Skills toevoegen
+    <hr>
 
-    <div class="well">Skills toevoegen</div>
+<form name="addSkills" novalidate ng-submit="addSkill()">
     <!--
     filter will not work on promise
     <input ng-model="skill" typeahead="skill for skill in skills | filter:$viewValue | limitTo:8"/>-->
