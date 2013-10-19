@@ -2,7 +2,7 @@
 
 
 angular.module('frontendApp')
-  .controller('EditPersoonCtrl', ['$scope', 'Persoon', '$routeParams', 'Skill', '_', function ($scope, Persoon, $routeParams, Skill, _) {
+  .controller('EditPersoonCtrl', ['$scope', 'Persoon', '$routeParams', 'Skill', '_', 'ConfigService', '$resource', function ($scope, Persoon, $routeParams, Skill, _, $config, $resource) {
     $scope.selectedSkill;
     $scope.persoon = Persoon.get({id: $routeParams.persoonId});
 
@@ -19,11 +19,19 @@ angular.module('frontendApp')
         $scope.persoon.skills.push(skill);
       }
 
-      $scope.persoon.$update(function(n) {
+      var AddSkill = $resource($config.get('resourceBackendUri') + 'persoon/:id/skill');
+
+      AddSkill.save(skill, {id: $scope.persoon.id}, function(n) {
+        alert('helemaal goed');
+      }, function(n) {
+        alert('sjonge, een fout')
+      });
+
+      /*$scope.persoon.$update(function(n) {
         alert('saved');
       }, function(n) {
         alert('something is wrong');
-      });
+      });*/
 
     };
   }]);
