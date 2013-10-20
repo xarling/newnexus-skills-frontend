@@ -9,7 +9,7 @@ angular.module('frontendApp')
     // init get all personen
     $scope.personen = Persoon.query();
 
-    $scope.saveNew = function () {
+    $scope.save = function () {
       Persoon.save($scope.persoon, function (n) {
         // empty persoon at the end
         $scope.persoon = {};

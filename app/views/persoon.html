@@ -1,26 +1,37 @@
-<form name="persoonForm" novalidate ng-submit="saveNew()" class="form-inline">
-    <input type="text" ng-model="persoon.voornaam" placeholder="Voornaam" required/>
-    <input type="text" ng-model="persoon.achternaam" placeholder="Achternaam" required/>
-    <input class="btn btn-primary btn-sm" type="submit" ng-disabled="persoonForm.$invalid" value="Opslaan"/>
-</form>
+<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
 
-    <hr>
-    Huidige skills:
-<div class="row">
-    <div class="col-md-6">
-        <span ng-repeat="skill in persoon.skills | filter:search">
-            <span class="btn btn-primary">{{skill.naam}}  <button data-placement="top" data-original-title="Wissen" ng-click="deleteSkill(skill)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button></span>
-        </span>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Persoon</h3>
+    </div>
+    <div class="panel-body">
+        <form name="persoonForm" novalidate ng-submit="save()" class="form-inline">
+            <input type="text" ng-model="persoon.voornaam" placeholder="Voornaam" required/>
+            <input type="text" ng-model="persoon.achternaam" placeholder="Achternaam" required/>
+            <input class="btn btn-primary btn-sm" type="submit" ng-disabled="persoonForm.$invalid" value="Opslaan"/>
+        </form>
     </div>
 </div>
-<hr>Skills toevoegen
-    <hr>
 
-<form name="addSkills" novalidate ng-submit="addSkill()">
-    <!--
-    filter will not work on promise
-    <input ng-model="skill" typeahead="skill for skill in skills | filter:$viewValue | limitTo:8"/>-->
-    <input ng-model="selectedSkill" typeahead="skill as skill.naam for skill in skills | filter:$viewValue | limitTo:8"/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Skills</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <span ng-repeat="skill in persoon.skills | filter:search">
+                    <span class="btn btn-primary">{{skill.naam}}  <button data-placement="top" data-original-title="Wissen" ng-click="deleteSkill(skill)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button></span>
+                </span>
+            </div>
+        </div>
+        <hr>
+        <form name="addSkillsForm" novalidate ng-submit="addSkill()">
+            <input ng-model="selectedSkill" typeahead="skill as skill.naam for skill in skills | filter:$viewValue | limitTo:8"/>
+            <input class="btn btn-primary btn-sm" type="submit" ng-disabled="addSkillsForm.$invalid" value="Skill toevoegen"/>
+        </form>
+    </div>
+</div>
 
-    <input class="btn btn-primary btn-sm" type="submit" ng-disabled="persoonForm.$invalid" value="Toevoegen"/>
-</form>
+
