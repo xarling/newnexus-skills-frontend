@@ -6,13 +6,12 @@
     <div class="col-md-6">
         <form novalidate ng-submit="addSkill()" name="skillForm" class="form-inline">
             <div class="form-group" ng-class="{'has-error': skillForm.$invalid && !skillForm.$pristine}">
-                <input type="text" class="form-control" name="naam" ng-model="skill.naam" not-in not-in-value="naam" not-in-items="{{skills}}" placeholder="Naam" required="true" />
+                <input type="text" class="form-control" name="naam" ng-model="skill.naam" notin not-in-value="naam" not-in-items="{{skills}}" placeholder="Naam" required="true" />
             </div>
             <div class="form-group">
                 <input class="btn btn-primary btn-sm" type="submit" ng-disabled="skillForm.$invalid" value="Toevoegen"/>
             </div>
             <div class="error" ng-show="skillForm.naam.$error.notin">Deze waarde bestaat al</div>
-
         </form>
     </div>
 

@@ -27,9 +27,13 @@
             </div>
         </div>
         <hr>
-        <form name="addSkillsForm" novalidate ng-submit="addSkill()">
-            <input ng-model="selectedSkill" typeahead="skill as skill.naam for skill in skills | filter:$viewValue | limitTo:8"/>
-            <input class="btn btn-primary btn-sm" type="submit" ng-disabled="addSkillsForm.$invalid" value="Skill toevoegen"/>
+        <form name="addSkillsForm" novalidate ng-submit="addSkill()" class="form-inline">
+            <div class="form-group" ng-class="{'has-error': addSkillsForm.$invalid && !addSkillsForm.$pristine}" >
+                <input required ng-model="selectedSkill" not-in not-in-value="naam" not-in-items="{{persoon.skills}}"  typeahead="skill as skill.naam for skill in skills | filter:$viewValue | limitTo:8" class="form-control" placeholder="Skill" typeahead-editable="false"/>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary btn-sm" type="submit" ng-disabled="addSkillsForm.$invalid" value="Skill toevoegen"/>
+            </div>
         </form>
     </div>
 </div>
