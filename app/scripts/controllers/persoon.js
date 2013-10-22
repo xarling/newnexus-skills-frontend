@@ -2,7 +2,10 @@
 
 
 angular.module('frontendApp')
-  .controller('PersoonCtrl', ['$scope', 'Persoon', '$modal', 'Skill', function ($scope, Persoon, $modal, Skill) {
+  .controller('PersoonCtrl', ['$scope', 'Persoon', 'Skill', 'NotificationService', function ($scope, Persoon, Skill, NotificationService) {
+    $scope.alerts = NotificationService.alerts;
+    $scope.closeAlert = NotificationService.closeNotification;
+
 
     $scope.selectedSkill = undefined;
     $scope.skills = Skill.query();
@@ -13,9 +16,10 @@ angular.module('frontendApp')
       Persoon.save($scope.persoon, function (n) {
         // empty persoon at the end
         $scope.persoon = {};
+        NotificationService.addSuccess('Persoon opgeslagen');
       }, function (n) {
         // hier gaat het mis. Nu maar even alert
-        alert("probleem met het opslaan");
+        NotificationService.addError("probleem met het opslaan");
       });
     };
 
@@ -23,38 +27,11 @@ angular.module('frontendApp')
       Persoon.delete({id: persoon.id}, function(n) {
         // gaan we hier de persoon uit de lijst halen, of een nieuwe query?
         $scope.personen = Persoon.query();
+        NotificationService.addSuccess('De persoon bestaat niet meer...');
       }, function(n) {
-        alert('weer een probleem');
+        NotificationService.addError("probleem met het wissen");
       })
     };
 
-
-    $scope.open = function() {
-       var modalInstance = $modal.open({
-         templateUrl: 'modalContent.html',
-         controller: ModalInstanceCtrl,
-         backdrop: true,
-         backdropClick: true,
-         resolve: {
-           //items: function() {
-             //return $scope.items;
-             //alert('resolve stuff here');
-           //}
-         }
-       });
-
-      modalInstance.result.then(function (selectedItem) {
-        //$scope.selected = selectedItem;
-      }, function() {
-        //dismissed code here
-      })
-    }
-
-    var ModalInstanceCtrl = function($scope, $modalInstance) {
-      $scope.close = function(result){
-        $modalInstance.close(result);
-      };
-
-    };
 
   }]);

@@ -1,27 +1,5 @@
-<!-- Model dialog -->
+<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
 
-<!--<div>
-    <script type="text/ng-template" id="modalContent.html">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" ng-click="close()" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    Test vanalles
-                </div>
-                <div class="modal-footer">
-                    Footer
-                </div>
-            </div>
-
-        </div>
-    </script>
-
-    <button class="btn" ng-click="open()">Open</button>
-</div>-->
-<!-- End model dialog -->
 
 <div class="panel panel-default">
     <div class="panel-heading">
